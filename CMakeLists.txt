@@ -1,6 +1,6 @@
 project(python_interpreter)
 set(CMAKE_CXX_STANDARD 14)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}   -03")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}   -O3")
 include_directories(
         ${PROJECT_SOURCE_DIR}/generated/
         ${PROJECT_SOURCE_DIR}/third_party/
