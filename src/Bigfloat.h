@@ -236,6 +236,11 @@ public:
                 res.len = 1;
                 res.val.push_back(0);
             }
+	    if(a == b){
+                res.neg = 0;
+                res.len = 1;
+                res.val.push_back(1);
+            }
             else{
                 res.val.resize(a.len);
                 for(int i =tmpA.val.size()-b.val.size();b<tmpA;i--){
