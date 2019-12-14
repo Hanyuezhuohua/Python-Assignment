@@ -83,7 +83,7 @@ public:
     }
 
     explicit operator double() const{
-        bool res;
+        double res;
         switch(category)
         {
         case 1:
