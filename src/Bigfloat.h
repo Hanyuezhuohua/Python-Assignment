@@ -243,7 +243,7 @@ public:
             }
             else{
                 res.val.resize(a.len);
-                for(int i =tmpA.val.size()-b.val.size();b<tmpA;i--){
+                for(int i =tmpA.val.size()-b.val.size();b<=tmpA;i--){
                 	Bigfloat tmp;
                 	tmp.val.assign(i+1,0);
                 	tmp.val.back()=1;
@@ -361,6 +361,7 @@ public:
             val.push_back(ll%10);
             ll /= 10;
         }
+	res.len = res.val.size();
         while(val[len-1] == 0 && len > 1){
             val.pop_back();
             len--;
