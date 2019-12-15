@@ -361,7 +361,7 @@ public:
             val.push_back(ll%10);
             ll /= 10;
         }
-	res.len = res.val.size();
+	len = val.size();
         while(val[len-1] == 0 && len > 1){
             val.pop_back();
             len--;
