@@ -207,14 +207,14 @@ public:
         Bigfloat res;
         if(a.neg == b.neg) res.neg = 0;
         else res.neg = 1;
-        res.len = a.len + b.len;
+        res.len = a.len + b.len + 1;
         res.val.resize(res.len);
         for(int i = 0;i<a.len;i++){
             for(int j = 0;j<b.len;j++){
                 res.val[i + j] += a.val[i] * b.val[j];
             }
         }
-        for(int i = 0 ; i < res.len ; i++){
+        for(int i = 0 ; i < res.len -1 ; i++){
         	res.val[i+1] += res.val[i] / 10;
         	res.val[i] %= 10;
 		}
