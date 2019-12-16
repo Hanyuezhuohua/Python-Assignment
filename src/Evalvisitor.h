@@ -462,7 +462,6 @@ class EvalVisitor: public Python3BaseVisitor {
             return BFINS(flag);
         }
     };
-
     antlrcpp::Any visitComparison(Python3Parser::ComparisonContext *context) override{
         //cout << "Comparison" << endl;
         if(context->arith_expr().size() == 1){
@@ -473,24 +472,22 @@ class EvalVisitor: public Python3BaseVisitor {
             }
             if(Ret.is<vector<BFINS>>()){
                 vector<BFINS>ret = Ret.as<vector<BFINS>>();
-                //if(ret.size() >= 1) ret[0].print();
-                //cout << endl;
                 return ret;
             }
         }
         else if(context->arith_expr().size() > 1){
             bool flag = 1;
+            antlrcpp::Any RetA = visit(context->arith_expr(0));
+            BFINS retA;
+            if(RetA.is<BFINS>()){
+                retA = RetA.as<BFINS>();
+            }
+            if(RetA.is<vector<BFINS>>()){
+                retA = RetA.as<vector<BFINS>>()[0];
+            }
             for(int i = 1;i < context->arith_expr().size();i++){
                 if(!flag) break;
                 string s = context->comp_op()[i-1]->getText();
-                antlrcpp::Any RetA = visit(context->arith_expr(i-1));
-                BFINS retA;
-                if(RetA.is<BFINS>()){
-                    retA = RetA.as<BFINS>();
-                }
-                if(RetA.is<vector<BFINS>>()){
-                    retA = RetA.as<vector<BFINS>>()[0];
-                }
                 antlrcpp::Any RetB = visit(context->arith_expr(i));
                 BFINS retB;
                 if(RetB.is<BFINS>()){
@@ -500,10 +497,6 @@ class EvalVisitor: public Python3BaseVisitor {
                     retB = RetB.as<vector<BFINS>>()[0];
                 }
                 if(s == "<"){
-        //            retA.print();
-        //            cout << "PPPP" << endl;
-        //            retB.print();
-        //            cout << "PPPP" << endl;
                     if(retA >= retB)
                     flag = 0;
                 }
@@ -527,6 +520,7 @@ class EvalVisitor: public Python3BaseVisitor {
                     if(retA == retB)
                     flag = 0;
                 }
+                retA = retB;
             }
             return BFINS(flag);
         }
