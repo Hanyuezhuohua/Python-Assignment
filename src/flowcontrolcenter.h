@@ -14,16 +14,16 @@ public:
     flowcontrolcenter(){
         memset(this , 0 , sizeof *this);
     }
-    void push(Statement x){
+    inline void push(Statement x){
         State[++top] = x;
     }
-    Statement TOP(){
+    inline Statement TOP(){
         return State[top];
     }
-    void turnto(Statement x){
+    inline void turnto(Statement x){
         State[top] = x;
     }
-    void pop(){
+    inline void pop(){
         --top;
     }
 };
