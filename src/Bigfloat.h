@@ -325,7 +325,7 @@ public:
     }
 
 
-    string String() const{
+    inline string String() const{
         if(!val.size()) return"0";
         string s = neg? "-" :  "";
         for(int i = val.size()-1 ;i>=0 ; i--){
@@ -334,14 +334,14 @@ public:
         return s;
     }
 
-    bool Bool() const{
+    inline bool Bool() const{
         bool flag;
         if(len == 1 && val[0] == 0) flag = false;
         else flag = true; 
         return flag;
     }
 
-    double Double() const{
+    inline double Double() const{
         double res = 0.0;
         for(int i = len-1 ; ~i ; i--){
             res = res * 10 + val[i];
@@ -349,7 +349,7 @@ public:
         return res;
     }
 
-    void dOUBLE(const double &d){
+    inline void dOUBLE(const double &d){
         long long ll = d;
         val.clear();
         if(ll<0){
@@ -368,7 +368,7 @@ public:
         }
     } 
 
-    void sTRING(const string &s){
+    inline void sTRING(const string &s){
         val.clear();
         neg = 0;
         len = 0;
@@ -384,7 +384,7 @@ public:
         if(!len) neg = 0;
     }
 
-    void bOOL(const bool &b){
+    inline void bOOL(const bool &b){
         val.clear();
         neg = 0;
         len = 1;
@@ -392,7 +392,7 @@ public:
         else val.push_back(0);
     }
 
-    void print() const{
+    inline void print() const{
         if(neg) putchar('-');
         for(int i = val.size()-1 ; i>=0 ; i--){
            cout << val[i];
