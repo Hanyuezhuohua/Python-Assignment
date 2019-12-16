@@ -127,28 +127,28 @@ public:
         return res;
     }
     
-    BFINS Bool() {
+    inline BFINS Bool() {
         BFINS ret = *this;
     	bool flag = (bool)ret;
     	BFINS res(flag);
         return res;
     }
 
-    BFINS Double() {
+    inline BFINS Double() {
         BFINS ret = *this;
     	double flag = (double)ret;
     	BFINS res(flag);
         return res;
     }
 
-    BFINS Int() {
+    inline BFINS Int() {
         BFINS ret = *this;
     	Bigfloat flag = (Bigfloat)ret;
     	BFINS res(flag);
         return res;
     }
 
-    BFINS String() {
+    inline BFINS String() {
         BFINS ret = *this;
     	string flag = (string)ret;
     	BFINS res(flag);
@@ -426,7 +426,7 @@ public:
         return *this = *this || a;
     }
 
-    void print() const{
+    inline void print() const{
         switch(category){
         case 0:
             break;
