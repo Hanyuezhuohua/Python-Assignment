@@ -304,7 +304,7 @@ public:
             break;
         case 5:
             tmp = a.category == 5? a.s : b.s;
-            Tmp = a.category == 3? a.bb :b.bb;
+            Tmp = a.category == 2? a.bb :b.bb;
             while(Tmp > Bigfloat(0)){
                 Tmp--;
                 S += tmp;
